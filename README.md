@@ -1,5 +1,6 @@
 ## Hi there 👋
 I’m a Computer Science student at Universitas Siliwangi with a strong interest in Artificial Intelligence, programming, and gaming. I love diving into new technologies, learning about how they work, and experimenting with different programming techniques.
+
 🔭 What I’m working on:
 
 * Exploring projects related to AI and IoT
