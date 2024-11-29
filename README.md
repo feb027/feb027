@@ -8,6 +8,7 @@ I’m a Computer Science student at Universitas Siliwangi with a strong interest
 * Working on fun side projects related to game development
 
 🎮 In my free time:
+
 I’m an avid gamer, with a passion for competitive games like Valorant and Counter-Strike 2. I also enjoy rhythm games such as osu! which help me stay sharp and focused!
 
 🤔 I’m interested in:
@@ -17,4 +18,4 @@ I’m an avid gamer, with a passion for competitive games like Valorant and Coun
 * Game development and mechanics
 * IoT and smart technologies
 
-💬 Feel free to reach out if you want to chat about tech, gaming, or if you're looking to collaborate on projects. I’m always open to learning from others and sharing ideas!
+💬 Feel free to reach out if you want to chat about tech, gaming, or if you're looking to collaborate on projects.
