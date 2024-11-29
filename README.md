@@ -14,7 +14,6 @@ I’m an avid gamer, with a passion for competitive games like Valorant and Coun
 🤔 I’m interested in:
 
 * Artificial Intelligence
-* Competitive Programming
 * Game development and mechanics
 * IoT and smart technologies
 
