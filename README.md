@@ -3,7 +3,7 @@ I’m a Computer Science student at Universitas Siliwangi with a strong interest
 
 🔭 What I’m working on:
 
-* Exploring projects related to AI and IoT
+* Exploring projects related to AI and Hardware PC stuff
 * Improving my coding skills with new challenges
 * Working on fun side projects related to game development
 
@@ -15,6 +15,6 @@ I’m an avid gamer, with a passion for competitive games like Valorant and Coun
 
 * Artificial Intelligence
 * Game development and mechanics
-* IoT and smart technologies
+* Pc Hardware
 
 💬 Feel free to reach out if you want to chat about tech, gaming, or if you're looking to collaborate on projects.
