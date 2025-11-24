@@ -6,6 +6,8 @@
 
 Hey! I'm a 5th-semester Informatics student at **Universitas Siliwangi**, passionate about crafting beautiful and functional web experiences. While I work across the full stack, my heart truly belongs to **front-end development** – there's something magical about bringing designs to life and creating intuitive user interfaces.
 
+🌐 **Check out my Portfolio:** [aquarise.qzz.io](https://aquarise.qzz.io/)
+
 🎯 Currently, I'm on a mission to build diverse applications and dive deep into the **open-source community**. Every project is a new adventure, and I'm always eager to learn and grow!
 
 ---
@@ -64,6 +66,7 @@ An intelligent pattern generator for ECU development. This tool automates comple
 
 <div align="center">
   
+  [![Portfolio](https://img.shields.io/badge/-Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white)](https://aquarise.qzz.io/)
   [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/febnawan-fr/)
   [![Email](https://img.shields.io/badge/-Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:febnawanrochman2@gmail.com)
   
