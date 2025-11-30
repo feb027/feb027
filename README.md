@@ -6,7 +6,7 @@
 
 Hey! I'm a 5th-semester Informatics student at **Universitas Siliwangi**, passionate about crafting beautiful and functional web experiences. While I work across the full stack, my heart truly belongs to **front-end development** – there's something magical about bringing designs to life and creating intuitive user interfaces.
 
-🌐 **Check out my Portfolio:** [aquarise.qzz.io](https://aquarise.qzz.io/)
+🌐 **Check out my Portfolio:** [aquarise.qzz.io](https://aquarise.my.id/)
 
 🎯 Currently, I'm on a mission to build diverse applications and dive deep into the **open-source community**. Every project is a new adventure, and I'm always eager to learn and grow!
 
