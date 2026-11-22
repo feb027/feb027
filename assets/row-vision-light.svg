@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 104" width="880" height="104" role="img" aria-label="03 YOLO26 INT8 — CPU-only quantized people counting thesis">
+  <title>03 YOLO26 INT8</title>
+  <defs>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      @keyframes trackA {
+        0%, 100% { transform: translate(0px, -6px); }
+        50% { transform: translate(6px, 8px); }
+      }
+      @keyframes trackB {
+        0%, 100% { transform: translate(0px, 6px); }
+        50% { transform: translate(-6px, -7px); }
+      }
+      .det-a { animation: trackA 4.6s cubic-bezier(0.32, 0.72, 0, 1) infinite; }
+      .det-b { animation: trackB 5.4s cubic-bezier(0.32, 0.72, 0, 1) infinite; }
+      @media (prefers-reduced-motion: reduce) {
+        .det-a, .det-b { animation: none; }
+      }
+    </style>
+  </defs>
+
+  <text x="0" y="38" class="mono" font-size="12" fill="#6E7781">03</text>
+  <text x="36" y="39" class="sans" font-size="18.5" font-weight="600" fill="#1F2328" letter-spacing="-0.35">YOLO26 INT8</text>
+  <text x="36" y="61" class="sans" font-size="13.5" fill="#57606A">CPU-only quantized people counting thesis</text>
+  <text x="36" y="82" class="mono" font-size="11.5" fill="#6E7781">Python · OpenVINO · 2.38x speedup · 3.74x smaller · ΔnMAE &lt; 0.25%</text>
+
+  <g>
+    <line x1="666" y1="54" x2="876" y2="54" stroke="#D0D7DE" stroke-width="1" stroke-dasharray="4 4"/>
+    <g class="det-a">
+      <rect x="704" y="28" width="42" height="48" rx="4" fill="none" stroke="#0F766E" stroke-width="1.35" stroke-dasharray="3 2"/>
+      <text x="708" y="24" class="mono" font-size="9.5" fill="#0F766E">0.94</text>
+    </g>
+    <g class="det-b">
+      <rect x="792" y="30" width="42" height="48" rx="4" fill="none" stroke="#57606A" stroke-width="1.2"/>
+      <text x="796" y="26" class="mono" font-size="9.5" fill="#57606A">0.91</text>
+    </g>
+  </g>
+
+  <line x1="0" y1="103" x2="880" y2="103" stroke="#D0D7DE" stroke-width="1"/>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 104" width="880" height="104" role="img" aria-label="02 ECU Bench S3 — ESP32-S3 ignition coil and CAN bus simulator">
+  <title>02 ECU Bench S3</title>
+  <defs>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      @keyframes ecuScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-120px); }
+      }
+      .ecu-trace { animation: ecuScroll 3.2s linear infinite; }
+      @media (prefers-reduced-motion: reduce) {
+        .ecu-trace { animation: none; }
+      }
+    </style>
+    <linearGradient id="ecuFade" x1="664" y1="0" x2="880" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="14%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="86%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="ecuMask">
+      <rect x="664" y="16" width="216" height="72" fill="url(#ecuFade)"/>
+    </mask>
+    <clipPath id="ecuClip">
+      <rect x="664" y="16" width="216" height="72"/>
+    </clipPath>
+  </defs>
+
+  <text x="0" y="38" class="mono" font-size="12" fill="#6E7781">02</text>
+  <text x="36" y="39" class="sans" font-size="18.5" font-weight="600" fill="#1F2328" letter-spacing="-0.35">ECU Bench S3</text>
+  <text x="36" y="61" class="sans" font-size="13.5" fill="#57606A">ESP32-S3 ignition coil and CAN bus simulator</text>
+  <text x="36" y="82" class="mono" font-size="11.5" fill="#6E7781">C++ · FreeRTOS · 36-2 CKP · 500 kbps</text>
+
+  <line x1="664" y1="66" x2="876" y2="66" stroke="#D0D7DE" stroke-width="1"/>
+  <g clip-path="url(#ecuClip)" mask="url(#ecuMask)">
+    <path d="M 660 66 L 678 66 L 678 48 L 694 48 L 694 66 L 712 66 L 716 26 L 722 74 L 730 62 L 736 66 L 752 66 L 752 48 L 766 48 L 766 66 L 780 66 L 780 66 L 798 66 L 798 48 L 814 48 L 814 66 L 832 66 L 836 26 L 842 74 L 850 62 L 856 66 L 872 66 L 872 48 L 886 48 L 886 66 L 900 66 L 900 66 L 918 66 L 918 48 L 934 48 L 934 66 L 952 66 L 956 26 L 962 74 L 970 62 L 976 66 L 992 66 L 992 48 L 1006 48 L 1006 66 L 1020 66 L 1020 66 L 1038 66 L 1038 48 L 1054 48 L 1054 66 L 1072 66 L 1076 26 L 1082 74 L 1090 62 L 1096 66 L 1112 66 L 1112 48 L 1126 48 L 1126 66 L 1140 66" fill="none" stroke="#0F766E" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" class="ecu-trace"/>
+  </g>
+
+  <line x1="0" y1="103" x2="880" y2="103" stroke="#D0D7DE" stroke-width="1"/>
+</svg>
