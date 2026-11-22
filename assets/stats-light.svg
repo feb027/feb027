@@ -28,8 +28,8 @@
   <!-- KPI 1: Contributions (12M) & Commits -->
   <g>
     <text x="28" y="68" class="mono" font-size="10" font-weight="700" fill="#64748B" letter-spacing="1.2">CONTRIBUTIONS (12M)</text>
-    <text x="28" y="104" class="mono" font-size="34" font-weight="800" fill="#0F172A">1,699</text>
-    <text x="28" y="123" class="mono" font-size="10.5" font-weight="600" fill="#0F766E">1291 Pub + 370 Priv Commits</text>
+    <text x="28" y="104" class="mono" font-size="34" font-weight="800" fill="#0F172A">1,697</text>
+    <text x="28" y="123" class="mono" font-size="10.5" font-weight="600" fill="#0F766E">1290 Pub + 369 Priv Commits</text>
   </g>
 
   <!-- KPI 2: Longest Streak & Active Days -->
@@ -59,32 +59,32 @@
   <!-- Bottom Left: 26-Week Contribution Velocity Chart (x: 28..480) -->
   <g>
     <text x="28" y="156" class="mono" font-size="10" font-weight="700" fill="#64748B" letter-spacing="1.4">26-WEEK COMMIT &amp; CONTRIBUTION VELOCITY</text>
-    <rect x="28" y="215" width="12" height="9" rx="3" fill="#E2E8F0"/>
-    <rect x="46" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="63" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="81" y="216" width="12" height="8" rx="3" fill="#E2E8F0"/>
-    <rect x="98" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="116" y="166" width="12" height="58" rx="3" fill="#0F766E"/>
-    <rect x="133" y="210" width="12" height="14" rx="3" fill="#E2E8F0"/>
-    <rect x="151" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="168" y="195" width="12" height="29" rx="3" fill="#0284C7"/>
-    <rect x="186" y="188" width="12" height="36" rx="3" fill="#0F766E"/>
-    <rect x="203" y="192" width="12" height="32" rx="3" fill="#0284C7"/>
-    <rect x="221" y="203" width="12" height="21" rx="3" fill="#0284C7"/>
-    <rect x="238" y="176" width="12" height="48" rx="3" fill="#0F766E"/>
-    <rect x="256" y="214" width="12" height="10" rx="3" fill="#E2E8F0"/>
-    <rect x="273" y="208" width="12" height="16" rx="3" fill="#0284C7"/>
-    <rect x="291" y="211" width="12" height="13" rx="3" fill="#E2E8F0"/>
-    <rect x="308" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="326" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="343" y="218" width="12" height="6" rx="3" fill="#E2E8F0"/>
-    <rect x="361" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="378" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="396" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="413" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="431" y="219" width="12" height="5" rx="3" fill="#E2E8F0"/>
-    <rect x="448" y="217" width="12" height="7" rx="3" fill="#E2E8F0"/>
-    <rect x="466" y="219" width="12" height="5" rx="3" fill="#D97706" class="pulse-bar"/>
+    <rect x="28" y="214" width="12" height="10" rx="3" fill="#E2E8F0"/>
+    <rect x="46" y="209" width="12" height="15" rx="3" fill="#0284C7"/>
+    <rect x="63" y="211" width="12" height="13" rx="3" fill="#E2E8F0"/>
+    <rect x="81" y="203" width="12" height="21" rx="3" fill="#0284C7"/>
+    <rect x="98" y="216" width="12" height="8" rx="3" fill="#E2E8F0"/>
+    <rect x="116" y="205" width="12" height="19" rx="3" fill="#0284C7"/>
+    <rect x="133" y="193" width="12" height="31" rx="3" fill="#0284C7"/>
+    <rect x="151" y="198" width="12" height="26" rx="3" fill="#0284C7"/>
+    <rect x="168" y="212" width="12" height="12" rx="3" fill="#E2E8F0"/>
+    <rect x="186" y="204" width="12" height="20" rx="3" fill="#0284C7"/>
+    <rect x="203" y="188" width="12" height="36" rx="3" fill="#0F766E"/>
+    <rect x="221" y="196" width="12" height="28" rx="3" fill="#0284C7"/>
+    <rect x="238" y="201" width="12" height="23" rx="3" fill="#0284C7"/>
+    <rect x="256" y="207" width="12" height="17" rx="3" fill="#0284C7"/>
+    <rect x="273" y="191" width="12" height="33" rx="3" fill="#0284C7"/>
+    <rect x="291" y="180" width="12" height="44" rx="3" fill="#0F766E"/>
+    <rect x="308" y="197" width="12" height="27" rx="3" fill="#0284C7"/>
+    <rect x="326" y="205" width="12" height="19" rx="3" fill="#0284C7"/>
+    <rect x="343" y="187" width="12" height="37" rx="3" fill="#0F766E"/>
+    <rect x="361" y="175" width="12" height="49" rx="3" fill="#0F766E"/>
+    <rect x="378" y="194" width="12" height="30" rx="3" fill="#0284C7"/>
+    <rect x="396" y="199" width="12" height="25" rx="3" fill="#0284C7"/>
+    <rect x="413" y="181" width="12" height="43" rx="3" fill="#0F766E"/>
+    <rect x="431" y="166" width="12" height="58" rx="3" fill="#0F766E"/>
+    <rect x="448" y="189" width="12" height="35" rx="3" fill="#0F766E"/>
+    <rect x="466" y="198" width="12" height="26" rx="3" fill="#D97706" class="pulse-bar"/>
     <text x="28" y="246" class="mono" font-size="10" fill="#64748B">6 MONTHS AGO</text>
     <text x="476" y="246" text-anchor="end" class="mono" font-size="10" font-weight="700" fill="#D97706">● THIS WEEK</text>
   </g>
