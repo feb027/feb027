@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 236" width="880" height="236" role="img" aria-label="Multitech Service Management Web App — React, TypeScript, Vite, Tailwind CSS">
+  <title>Multitech Service &amp; Workshop OS</title>
+  <defs>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, Menlo, monospace; font-variant-numeric: tabular-nums; }
+      @keyframes progressFill {
+        0%, 15% { width: 80px; }
+        50%, 85% { width: 196px; }
+        100% { width: 80px; }
+      }
+      @keyframes rowHighlight {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.65; }
+      }
+      .anim-bar { animation: progressFill 4.5s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+      .anim-badge { animation: rowHighlight 2.2s ease-in-out infinite; }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
+  </defs>
+
+  <rect width="880" height="236" rx="16" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+
+  <!-- Left Identity Panel (x: 0..330) — Max 4 items, ZERO paragraphs! -->
+  <g>
+    <text x="28" y="42" class="mono" font-size="11" font-weight="700" fill="#0284C7" letter-spacing="1.6">01 // FULL-STACK WEB APP</text>
+    <text x="28" y="88" class="sans" font-size="34" font-weight="800" fill="#0F172A" letter-spacing="-1.2">Multitech OS</text>
+    <text x="28" y="116" class="sans" font-size="15.5" font-weight="600" fill="#475569">ECU &amp; Electronics Repair Platform</text>
+
+    <!-- 3 Big Figure / Feature Pairs -->
+    <g transform="translate(28, 138)">
+      <rect width="136" height="36" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="12" y="15" class="mono" font-size="9" fill="#64748B">WORKFLOW</text>
+      <text x="12" y="29" class="mono" font-size="11.5" font-weight="700" fill="#0F172A">Live Queue</text>
+
+      <rect x="146" y="0" width="142" height="36" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="158" y="15" class="mono" font-size="9" fill="#64748B">ARCHITECTURE</text>
+      <text x="158" y="29" class="mono" font-size="11.5" font-weight="700" fill="#0284C7">React + TS + Vite</text>
+    </g>
+
+    <!-- Bottom Tech Chips -->
+    <g class="mono" font-size="10.5" font-weight="600" fill="#64748B">
+      <text x="28" y="206">TYPESCRIPT  ·  REACT  ·  TAILWIND  ·  VITE ↗</text>
+    </g>
+  </g>
+
+  <line x1="344" y1="0" x2="344" y2="236" stroke="#CBD5E1" stroke-width="1.2"/>
+
+  <!-- Right Product Stage: Vector Redraw of Service Management Dashboard (x: 344..880) -->
+  <g transform="translate(364, 18)">
+    <rect width="496" height="200" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+
+    <!-- App Top Bar -->
+    <rect width="496" height="34" rx="12" fill="#F1F5F9"/>
+    <circle cx="16" cy="17" r="4" fill="#E11D48"/>
+    <circle cx="28" cy="17" r="4" fill="#D97706"/>
+    <circle cx="40" cy="17" r="4" fill="#0F766E"/>
+    <rect x="62" y="8" width="210" height="18" rx="5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="0.8"/>
+    <text x="72" y="20" class="mono" font-size="9.5" fill="#64748B">⌘K  Search repair order #SRV...</text>
+    <rect x="382" y="8" width="98" height="18" rx="5" fill="rgba(15, 118, 110, 0.10)"/>
+    <text x="431" y="20" text-anchor="middle" class="mono" font-size="9.5" font-weight="700" fill="#0F766E">● 14 ACTIVE JOBS</text>
+
+    <!-- Ticket Row 1 (Animated Active Repair) -->
+    <g transform="translate(16, 46)">
+      <rect width="464" height="44" rx="8" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.2"/>
+      <text x="14" y="19" class="mono" font-size="11" font-weight="700" fill="#0284C7">#SRV-204</text>
+      <text x="86" y="19" class="sans" font-size="12.5" font-weight="700" fill="#0F172A">Honda CR-V Gen 3 · Keihin ECU</text>
+      <rect x="358" y="8" width="92" height="18" rx="9" fill="rgba(15, 118, 110, 0.10)"/>
+      <text class="anim-badge" x="404" y="20" text-anchor="middle" class="mono" font-size="9.5" font-weight="700" fill="#0F766E">● BENCH TEST</text>
+      <!-- Animated Progress Bar inside Ticket 1 -->
+      <rect x="14" y="30" width="220" height="5" rx="2.5" fill="#E2E8F0"/>
+      <rect class="anim-bar" x="14" y="30" width="160" height="5" rx="2.5" fill="#0284C7"/>
+      <text x="450" y="36" text-anchor="end" class="mono" font-size="10" font-weight="600" fill="#475569">IGT Pulse OK · 92%</text>
+    </g>
+
+    <!-- Ticket Row 2 -->
+    <g transform="translate(16, 98)">
+      <rect width="464" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="14" y="24" class="mono" font-size="11" font-weight="700" fill="#64748B">#SRV-205</text>
+      <text x="86" y="24" class="sans" font-size="12.5" font-weight="600" fill="#0F172A">Toyota Innova Reborn · Injector Driver</text>
+      <rect x="358" y="11" width="92" height="18" rx="9" fill="rgba(2, 132, 199, 0.10)"/>
+      <text x="404" y="23" text-anchor="middle" class="mono" font-size="9.5" font-weight="700" fill="#0284C7">✓ COMPLETED</text>
+    </g>
+
+    <!-- Ticket Row 3 -->
+    <g transform="translate(16, 146)">
+      <rect width="464" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="14" y="24" class="mono" font-size="11" font-weight="700" fill="#64748B">#SRV-206</text>
+      <text x="86" y="24" class="sans" font-size="12.5" font-weight="600" fill="#0F172A">Mitsubishi Pajero Sport · CAN Gateway</text>
+      <rect x="358" y="11" width="92" height="18" rx="9" fill="#E2E8F0"/>
+      <text x="404" y="23" text-anchor="middle" class="mono" font-size="9.5" font-weight="700" fill="#D97706">⧗ QUEUED</text>
+    </g>
+  </g>
+</svg>

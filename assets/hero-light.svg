@@ -1,114 +1,138 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 410" width="1200" height="410" role="img" aria-label="Febnawan Fatur Rochman (Aquarise) — Edge AI, High-Craft Web UI, and Automotive Embedded Systems">
-  <title>Febnawan Fatur Rochman (Aquarise) — Engineering Profile</title>
-  <desc>Computer Vision and Edge AI researcher, Full-Stack Frontend Engineer, and Automotive Embedded Systems Developer at Universitas Siliwangi.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" width="880" height="300" role="img" aria-label="Febnawan Fatur Rochman (Aquarise) — Frontend, Edge AI Vision, and Automotive Systems">
+  <title>Febnawan Fatur Rochman (Aquarise)</title>
   <defs>
     <style>
-      .sans { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif; }
-      .mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-variant-numeric: tabular-nums; }
-      @keyframes pulseRing {
-        0% { transform: scale(0.95); opacity: 0.75; }
-        70% { transform: scale(2.1); opacity: 0; }
-        100% { transform: scale(2.1); opacity: 0; }
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, Menlo, monospace; font-variant-numeric: tabular-nums; }
+      @keyframes pulseDot {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(2.2); opacity: 0; }
       }
-      @keyframes fadeSlideUp {
-        0% { opacity: 0; transform: translateY(6px); }
-        100% { opacity: 1; transform: translateY(0); }
+      @keyframes cursorBlink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
       }
-      .pulse-ring {
-        transform-origin: 904px 48px;
-        animation: pulseRing 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      @keyframes scanY {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(68px); }
       }
-      .fade-1 { animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both; }
-      .fade-2 { animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both; }
-      .fade-3 { animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.23s both; }
-      @media (prefers-reduced-motion: reduce) {
-        * { animation: none !important; }
+      @keyframes waveFlow {
+        0% { stroke-dashoffset: 240; }
+        100% { stroke-dashoffset: 0; }
       }
+      @keyframes floatCard {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-4px); }
+      }
+      .pulse-ring { transform-origin: 36px 38px; animation: pulseDot 2.2s ease-out infinite; }
+      .cursor { animation: cursorBlink 1.1s step-end infinite; }
+      .laser-scan { animation: scanY 3.6s ease-in-out infinite; }
+      .ecu-trace { stroke-dasharray: 120 120; animation: waveFlow 3.2s linear infinite; }
+      .float-ui { animation: floatCard 4s ease-in-out infinite; }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
     </style>
-    <pattern id="swiss-cols" x="44" y="16" width="93.5" height="378" patternUnits="userSpaceOnUse">
-      <rect x="0" y="0" width="77.5" height="378" fill="#0F172A" opacity="0.022"/>
+    <pattern id="bp-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#E2E8F0" stroke-width="0.7" opacity="0.65"/>
     </pattern>
-    <linearGradient id="accent-bar" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0F766E"/>
-      <stop offset="100%" stop-color="#0071E3"/>
-    </linearGradient>
   </defs>
 
-  <!-- Outer Cool Canvas -->
-  <rect width="1200" height="410" rx="24" fill="#F5F5F7"/>
+  <!-- Main Card Frame -->
+  <rect width="880" height="300" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
 
-  <!-- Unified Surface Panel -->
-  <rect x="16" y="16" width="1168" height="378" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
-
-  <!-- Subtle 12-Column Swiss Architectural Underlay -->
-  <rect x="44" y="16" width="1112" height="378" fill="url(#swiss-cols)"/>
-
-  <!-- Top Running Head & Hairline -->
-  <g class="mono" font-size="11" fill="#6E6E73" letter-spacing="2.2">
-    <text x="48" y="52" font-weight="600" fill="#1D1D1F">FEBNAWAN FATUR ROCHMAN</text>
-    <text x="275" y="52" fill="#6E6E73">//  AQUARISE  ·  @FEB027</text>
-  </g>
-
-  <!-- Live Status Pill (Top Right) -->
+  <!-- Left Swiss Identity Column (x: 0..380) -->
   <g>
-    <rect x="886" y="33" width="266" height="30" rx="15" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
-    <circle class="pulse-ring" cx="904" cy="48" r="5" fill="#0F766E"/>
-    <circle cx="904" cy="48" r="4.2" fill="#0F766E"/>
-    <text x="918" y="52" class="mono" font-size="10.5" font-weight="600" fill="#1D1D1F" letter-spacing="1.2">S1 THESIS · EDGE AI RESEARCH</text>
-  </g>
+    <!-- Live Status Pill -->
+    <rect x="24" y="24" width="186" height="28" rx="14" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <circle class="pulse-ring" cx="36" cy="38" r="5" fill="#0F766E"/>
+    <circle cx="36" cy="38" r="4" fill="#0F766E"/>
+    <text x="48" y="42" class="mono" font-size="10.5" font-weight="700" fill="#0F172A" letter-spacing="1.2">AVAILABLE · S1 RESEARCH</text>
 
-  <line x1="16" y1="78" x2="1184" y2="78" stroke="#E5E7EB" stroke-width="1"/>
+    <!-- Giant Swiss Foundry Display Typography (Zero Paragraphs!) -->
+    <text x="24" y="114" class="sans" font-size="54" font-weight="800" fill="#0F172A" letter-spacing="-2.4">Febnawan</text>
+    <text x="24" y="168" class="sans" font-size="52" font-weight="800" fill="#0F766E" letter-spacing="-2.2">Aquarise<tspan class="cursor" fill="#0284C7">_</tspan></text>
 
-  <!-- Hero Display Typography & Positioning Statement -->
-  <g class="sans fade-1">
-    <text x="48" y="138" font-size="44" font-weight="700" fill="#1D1D1F" letter-spacing="-1.6">Engineering across neural inference,</text>
-    <text x="48" y="186" font-size="44" font-weight="700" fill="#1D1D1F" letter-spacing="-1.6">clean interfaces &amp; <tspan fill="#0F766E">silicon firmware.</tspan></text>
-    <rect x="48" y="205" width="76" height="3.5" rx="1.75" fill="url(#accent-bar)"/>
+    <!-- Big Clean Role Headline -->
+    <text x="26" y="198" class="sans" font-size="15" font-weight="600" fill="#475569">Frontend Craftsman · Edge AI · Silicon Firmware</text>
 
-    <!-- Right Editorial Metadata Block -->
-    <g class="mono" font-size="11.5" fill="#4B5563">
-      <text x="850" y="118" font-size="10" fill="#6E6E73" letter-spacing="2">AFFILIATION &amp; FOCUS</text>
-      <text x="850" y="140" font-weight="600" fill="#1D1D1F">Informatics @ Universitas Siliwangi</text>
-      <text x="850" y="160" fill="#4B5563">CPU-Only INT8 Quantization (YOLO26)</text>
-      <text x="850" y="180" fill="#4B5563">Automotive Diagnostics @ Multitech</text>
-      <text x="850" y="202" font-weight="600" fill="#0F766E">aquarise.my.id ↗</text>
+    <!-- 3 High-Contrast Domain Chips -->
+    <g class="mono" font-size="11" font-weight="600">
+      <rect x="24" y="216" width="104" height="28" rx="7" fill="rgba(2, 132, 199, 0.10)" stroke="#0284C7" stroke-width="1"/>
+      <text x="76" y="234" text-anchor="middle" fill="#0284C7">WEB &amp; UI</text>
+
+      <rect x="136" y="216" width="110" height="28" rx="7" fill="rgba(15, 118, 110, 0.10)" stroke="#0F766E" stroke-width="1"/>
+      <text x="191" y="234" text-anchor="middle" fill="#0F766E">YOLO26 INT8</text>
+
+      <rect x="254" y="216" width="104" height="28" rx="7" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="306" y="234" text-anchor="middle" fill="#0F172A">ESP32-S3 ECU</text>
     </g>
+
+    <!-- Bottom Colophon -->
+    <text x="26" y="274" class="mono" font-size="11.5" font-weight="600" fill="#64748B">UNSIL INFORMATICS  ·  <tspan fill="#0F766E">AQUARISE.MY.ID ↗</tspan></text>
   </g>
 
-  <!-- Middle Hairline Divider (Unified 3-Column Bento Grid) -->
-  <line x1="16" y1="232" x2="1184" y2="232" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="405" y1="232" x2="405" y2="352" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="795" y1="232" x2="795" y2="352" stroke="#E5E7EB" stroke-width="1"/>
+  <!-- Vertical Architectural Divider -->
+  <line x1="384" y1="0" x2="384" y2="300" stroke="#CBD5E1" stroke-width="1.2"/>
 
-  <!-- Column 01: Edge AI & Computer Vision -->
-  <g class="fade-2">
-    <text x="48" y="258" class="mono" font-size="10.5" font-weight="600" fill="#0F766E" letter-spacing="2">01 // COMPUTER VISION &amp; EDGE AI</text>
-    <text x="48" y="284" class="sans" font-size="17" font-weight="700" fill="#1D1D1F" letter-spacing="-0.3">Sub-8-Bit CPU Vision Pipelines</text>
-    <text x="48" y="308" class="sans" font-size="13" fill="#4B5563">NMS-free YOLO26/11/10 quantization, OpenVINO</text>
-    <text x="48" y="327" class="sans" font-size="13" fill="#4B5563">2026.2, NNCF PTQ, ONNX Runtime &amp; TrackEval.</text>
-  </g>
+  <!-- Right Animated Blueprint & Multi-System Stage (x: 384..880) -->
+  <g>
+    <rect x="385" y="1" width="494" height="298" rx="17" fill="#F8FAFC"/>
+    <rect x="385" y="1" width="494" height="298" fill="url(#bp-grid)"/>
 
-  <!-- Column 02: High-Craft Web & Full-Stack -->
-  <g class="fade-2">
-    <text x="433" y="258" class="mono" font-size="10.5" font-weight="600" fill="#0071E3" letter-spacing="2">02 // FRONTEND &amp; FULL-STACK WEB</text>
-    <text x="433" y="284" class="sans" font-size="17" font-weight="700" fill="#1D1D1F" letter-spacing="-0.3">Swiss &amp; Apple-Grade Web Interfaces</text>
-    <text x="433" y="308" class="sans" font-size="13" fill="#4B5563">TypeScript, React, Next.js, Svelte, Tailwind CSS,</text>
-    <text x="433" y="327" class="sans" font-size="13" fill="#4B5563">FastAPI &amp; Bun with restraint-first UI systems.</text>
-  </g>
+    <!-- Blueprint Header Strip -->
+    <text x="406" y="28" class="mono" font-size="10" font-weight="600" fill="#64748B" letter-spacing="1.6">STAGE // LIVE SYSTEM TELEMETRY</text>
+    <text x="858" y="28" text-anchor="end" class="mono" font-size="10" font-weight="700" fill="#0F766E">REV 2026.11 · 86 REPOS</text>
+    <line x1="385" y1="40" x2="879" y2="40" stroke="#E2E8F0" stroke-width="1"/>
 
-  <!-- Column 03: Embedded & Automotive Electronics -->
-  <g class="fade-3">
-    <text x="823" y="258" class="mono" font-size="10.5" font-weight="600" fill="#0F766E" letter-spacing="2">03 // AUTOMOTIVE &amp; EMBEDDED SYSTEMS</text>
-    <text x="823" y="284" class="sans" font-size="17" font-weight="700" fill="#1D1D1F" letter-spacing="-0.3">Real-Time ECU &amp; Low-Latency Systems</text>
-    <text x="823" y="308" class="sans" font-size="13" fill="#4B5563">Dual-Core ESP32-S3 FreeRTOS, MCP2515 CAN-Bus,</text>
-    <text x="823" y="327" class="sans" font-size="13" fill="#4B5563">ILI9341 TFT telemetry &amp; Rust WASAPI audio.</text>
-  </g>
+    <!-- MODULE A: Vision Bounding-Box Radar Stage (Top Left of Stage) -->
+    <g transform="translate(404, 54)">
+      <rect width="220" height="122" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+      <rect width="220" height="24" rx="10" fill="#F1F5F9"/>
+      <circle cx="14" cy="12" r="3.5" fill="#E11D48"/>
+      <circle cx="25" cy="12" r="3.5" fill="#D97706"/>
+      <circle cx="36" cy="12" r="3.5" fill="#0F766E"/>
+      <text x="208" y="16" text-anchor="end" class="mono" font-size="9.5" font-weight="700" fill="#0F766E">YOLO26 INT8 · 2.38x</text>
 
-  <!-- Bottom Colophon Strip -->
-  <line x1="16" y1="352" x2="1184" y2="352" stroke="#E5E7EB" stroke-width="1"/>
-  <g class="mono" font-size="10.5" fill="#6E6E73" letter-spacing="1.6">
-    <text x="48" y="376">TASIKMALAYA, INDONESIA  ·  UTC+7</text>
-    <text x="433" y="376">STACK: PYTHON 3.11 · TS · C++ · RUST</text>
-    <text x="1152" y="376" text-anchor="end" fill="#4B5563">AQUARISE.MY.ID  ·  REV 2026.11</text>
+      <!-- Tracked Target Box 1 -->
+      <rect x="22" y="38" width="68" height="68" rx="4" fill="rgba(15, 118, 110, 0.10)" stroke="#0F766E" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <rect x="22" y="38" width="54" height="14" rx="2" fill="#0F766E"/>
+      <text x="26" y="48" class="mono" font-size="8.5" font-weight="700" fill="#FFFFFF">ID#07 0.94</text>
+
+      <!-- Tracked Target Box 2 -->
+      <rect x="116" y="46" width="80" height="60" rx="4" fill="rgba(2, 132, 199, 0.10)" stroke="#0284C7" stroke-width="1.5"/>
+      <rect x="116" y="46" width="56" height="14" rx="2" fill="#0284C7"/>
+      <text x="120" y="56" class="mono" font-size="8.5" font-weight="700" fill="#FFFFFF">ID#12 0.91</text>
+
+      <!-- Animated Laser Scan Line -->
+      <line class="laser-scan" x1="12" y1="36" x2="208" y2="36" stroke="#0F766E" stroke-width="1.5" opacity="0.85"/>
+    </g>
+
+    <!-- MODULE B: Floating Clean Frontend UI Card (Top Right of Stage) -->
+    <g class="float-ui" transform="translate(638, 54)">
+      <rect width="222" height="122" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+      <text x="16" y="24" class="mono" font-size="9.5" font-weight="700" fill="#0284C7" letter-spacing="1.2">UI CRAFT // REACT · TS</text>
+      <text x="16" y="52" class="sans" font-size="24" font-weight="800" fill="#0F172A" letter-spacing="-0.8">99.4<tspan font-size="14" fill="#0F766E">%</tspan></text>
+      <text x="104" y="46" class="mono" font-size="10" font-weight="700" fill="#0F766E">▲ +2.38x CPU</text>
+      <text x="104" y="60" class="mono" font-size="9.5" fill="#64748B">OpenVINO IR</text>
+
+      <!-- Mini Spark Bars -->
+      <rect x="16" y="88" width="22" height="18" rx="3" fill="#E2E8F0"/>
+      <rect x="44" y="80" width="22" height="26" rx="3" fill="#E2E8F0"/>
+      <rect x="72" y="72" width="22" height="34" rx="3" fill="#0284C7" opacity="0.55"/>
+      <rect x="100" y="66" width="22" height="40" rx="3" fill="#0284C7" opacity="0.8"/>
+      <rect x="128" y="58" width="22" height="48" rx="3" fill="#0F766E"/>
+      <rect x="158" y="78" width="48" height="24" rx="6" fill="rgba(15, 118, 110, 0.10)" stroke="#0F766E" stroke-width="1"/>
+      <text x="182" y="94" text-anchor="middle" class="mono" font-size="10" font-weight="700" fill="#0F766E">LIVE</text>
+    </g>
+
+    <!-- MODULE C: ESP32-S3 Dual-Core ECU & CAN-Bus Oscilloscope Strip (Bottom Full Stage) -->
+    <g transform="translate(404, 190)">
+      <rect width="456" height="92" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+      <text x="16" y="22" class="mono" font-size="10" font-weight="700" fill="#475569" letter-spacing="1.2">ESP32-S3 DUAL-CORE ECU BENCH  ·  IGT/IGW COIL &amp; CAN 500KBPS</text>
+      <text x="440" y="22" text-anchor="end" class="mono" font-size="10" font-weight="700" fill="#D97706">3,600 RPM</text>
+
+      <!-- Oscilloscope Waveform Path -->
+      <path d="M 16 68 L 54 68 L 54 36 L 86 36 L 86 68 L 124 68 L 136 46 L 144 30 L 152 76 L 160 68 L 204 68 L 204 36 L 236 36 L 236 68 L 274 68 L 286 46 L 294 30 L 302 76 L 310 68 L 354 68 L 354 36 L 386 36 L 386 68 L 440 68" fill="none" stroke="#0F766E" stroke-width="1.5" opacity="0.32"/>
+      <path class="ecu-trace" d="M 16 68 L 54 68 L 54 36 L 86 36 L 86 68 L 124 68 L 136 46 L 144 30 L 152 76 L 160 68 L 204 68 L 204 36 L 236 36 L 236 68 L 274 68 L 286 46 L 294 30 L 302 76 L 310 68 L 354 68 L 354 36 L 386 36 L 386 68 L 440 68" fill="none" stroke="#0F766E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
   </g>
 </svg>

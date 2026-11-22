@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 236" width="880" height="236" role="img" aria-label="YOLO26 INT8 Quantization on CPU-Only Edge People Counting">
+  <title>YOLO26 INT8 CPU Edge People Counting</title>
+  <defs>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, Menlo, monospace; font-variant-numeric: tabular-nums; }
+      @keyframes trackMove {
+        0%, 100% { transform: translate(0px, 0px); }
+        50% { transform: translate(18px, -10px); }
+      }
+      .track-box { animation: trackMove 3.8s ease-in-out infinite; }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
+  </defs>
+
+  <rect width="880" height="236" rx="16" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+
+  <!-- Left Identity Panel -->
+  <g>
+    <text x="28" y="42" class="mono" font-size="11" font-weight="700" fill="#0F766E" letter-spacing="1.6">03 // EDGE AI &amp; VISION RESEARCH</text>
+    <text x="28" y="88" class="sans" font-size="34" font-weight="800" fill="#0F172A" letter-spacing="-1.2">YOLO26 INT8</text>
+    <text x="28" y="116" class="sans" font-size="15.5" font-weight="600" fill="#475569">CPU-Only Quantized People Counting</text>
+
+    <g transform="translate(28, 138)">
+      <rect width="136" height="36" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="12" y="15" class="mono" font-size="9" fill="#64748B">CPU SPEEDUP</text>
+      <text x="12" y="29" class="mono" font-size="12.5" font-weight="800" fill="#0F766E">2.38x Faster</text>
+
+      <rect x="146" y="0" width="142" height="36" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="158" y="15" class="mono" font-size="9" fill="#64748B">MODEL SIZE</text>
+      <text x="158" y="29" class="mono" font-size="12.5" font-weight="800" fill="#0284C7">3.74x Smaller</text>
+    </g>
+
+    <g class="mono" font-size="10.5" font-weight="600" fill="#64748B">
+      <text x="28" y="206">OPENVINO 2026  ·  NNCF INT8  ·  102/104 RUNS ↗</text>
+    </g>
+  </g>
+
+  <line x1="344" y1="0" x2="344" y2="236" stroke="#CBD5E1" stroke-width="1.2"/>
+
+  <!-- Right Product Stage: People Counting Tripwire & FP32 vs INT8 Benchmark -->
+  <g transform="translate(364, 18)">
+    <rect width="496" height="200" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+
+    <!-- Left Sub-Stage: MOT20 Tripwire Counting Viewport (230px wide) -->
+    <g transform="translate(14, 14)">
+      <rect width="224" height="172" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="12" y="20" class="mono" font-size="9.5" font-weight="700" fill="#64748B">MOT20 CROWD · [1,300,6] NMS-FREE</text>
+
+      <!-- Virtual Tripwire Line -->
+      <line x1="12" y1="102" x2="212" y2="102" stroke="#D97706" stroke-width="1.8" stroke-dasharray="6 4"/>
+      <text x="16" y="96" class="mono" font-size="8.5" font-weight="700" fill="#D97706">TRIPWIRE LINE</text>
+
+      <!-- Animated Tracked Person 1 -->
+      <g class="track-box">
+        <rect x="34" y="48" width="52" height="72" rx="4" fill="rgba(15, 118, 110, 0.10)" stroke="#0F766E" stroke-width="1.6"/>
+        <rect x="34" y="48" width="44" height="13" rx="2" fill="#0F766E"/>
+        <text x="38" y="58" class="mono" font-size="8" font-weight="700" fill="#FFFFFF">#04 0.94</text>
+        <path d="M 60 120 L 52 142" stroke="#0F766E" stroke-width="1.6" stroke-dasharray="2 2"/>
+      </g>
+
+      <!-- Tracked Person 2 -->
+      <rect x="126" y="64" width="54" height="74" rx="4" fill="rgba(2, 132, 199, 0.10)" stroke="#0284C7" stroke-width="1.6"/>
+      <rect x="126" y="64" width="44" height="13" rx="2" fill="#0284C7"/>
+      <text x="130" y="74" class="mono" font-size="8" font-weight="700" fill="#FFFFFF">#09 0.91</text>
+
+      <!-- Counter Footer -->
+      <rect x="12" y="142" width="200" height="22" rx="5" fill="#F1F5F9"/>
+      <text x="22" y="157" class="mono" font-size="10" font-weight="700" fill="#0F766E">IN: 148</text>
+      <text x="92" y="157" class="mono" font-size="10" font-weight="700" fill="#0284C7">OUT: 143</text>
+      <text x="204" y="157" text-anchor="end" class="mono" font-size="9.5" font-weight="700" fill="#0F172A">nMAE 1.8%</text>
+    </g>
+
+    <!-- Right Sub-Stage: CPU Latency & Footprint Comparison Bars (230px wide) -->
+    <g transform="translate(250, 14)">
+      <rect width="232" height="172" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+      <text x="16" y="22" class="mono" font-size="9.5" font-weight="700" fill="#64748B">INTEL CORE i5-12400F (NO GPU)</text>
+
+      <!-- FP32 Baseline Bar -->
+      <text x="16" y="48" class="mono" font-size="10.5" font-weight="600" fill="#475569">FP32 Baseline</text>
+      <text x="216" y="48" text-anchor="end" class="mono" font-size="10.5" font-weight="700" fill="#64748B">58.4 ms</text>
+      <rect x="16" y="55" width="200" height="10" rx="5" fill="#E2E8F0"/>
+
+      <!-- OpenVINO INT8 Bar -->
+      <text x="16" y="86" class="mono" font-size="10.5" font-weight="700" fill="#0F766E">OpenVINO INT8 PTQ</text>
+      <text x="216" y="86" text-anchor="end" class="mono" font-size="11" font-weight="800" fill="#0F766E">24.5 ms</text>
+      <rect x="16" y="93" width="200" height="10" rx="5" fill="#F1F5F9"/>
+      <rect x="16" y="93" width="84" height="10" rx="5" fill="#0F766E"/>
+
+      <!-- Big Summary Callout Box -->
+      <rect x="16" y="118" width="200" height="42" rx="8" fill="rgba(15, 118, 110, 0.10)" stroke="#0F766E" stroke-width="1"/>
+      <text x="28" y="136" class="mono" font-size="10" font-weight="700" fill="#0F766E">PARADOX ERROR CANCEL</text>
+      <text x="28" y="151" class="mono" font-size="10.5" font-weight="700" fill="#0F172A">ΔnMAE &lt; 0.25% vs FP32</text>
+    </g>
+  </g>
+</svg>

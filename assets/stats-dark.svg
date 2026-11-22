@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 268" width="880" height="268" role="img" aria-label="GitHub Commits, Streak, and Language Telemetry for feb027">
+  <title>GitHub Activity, Commits &amp; Streak Dashboard</title>
+  <defs>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, Menlo, monospace; font-variant-numeric: tabular-nums; }
+      @keyframes pulseBar {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.45; }
+      }
+      .pulse-bar { animation: pulseBar 1.8s ease-in-out infinite; }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    </style>
+  </defs>
+
+  <rect width="880" height="268" rx="16" fill="#111621" stroke="#232C3D" stroke-width="1.5"/>
+
+  <!-- Top Header Strip -->
+  <text x="28" y="30" class="mono" font-size="10.5" font-weight="700" fill="#64748B" letter-spacing="1.8">GITHUB TELEMETRY // COMMITS, STREAK &amp; LANGUAGES</text>
+  <text x="852" y="30" text-anchor="end" class="mono" font-size="10.5" font-weight="700" fill="#14B8A6">● AUTO-SYNCED 2026-11-22</text>
+  <line x1="0" y1="44" x2="880" y2="44" stroke="#1D2534" stroke-width="1"/>
+
+  <!-- 4 BIG HERO KPI TILES (y: 44..134) — 36px Bold Tabular Figures! -->
+  <line x1="220" y1="44" x2="220" y2="134" stroke="#1D2534" stroke-width="1"/>
+  <line x1="440" y1="44" x2="440" y2="134" stroke="#1D2534" stroke-width="1"/>
+  <line x1="660" y1="44" x2="660" y2="134" stroke="#1D2534" stroke-width="1"/>
+
+  <!-- KPI 1: Contributions (12M) & Commits -->
+  <g>
+    <text x="28" y="68" class="mono" font-size="10" font-weight="700" fill="#64748B" letter-spacing="1.2">CONTRIBUTIONS (12M)</text>
+    <text x="28" y="104" class="mono" font-size="34" font-weight="800" fill="#F8FAFC">1,699</text>
+    <text x="28" y="123" class="mono" font-size="10.5" font-weight="600" fill="#14B8A6">1291 Pub + 370 Priv Commits</text>
+  </g>
+
+  <!-- KPI 2: Longest Streak & Active Days -->
+  <g>
+    <text x="244" y="68" class="mono" font-size="10" font-weight="700" fill="#64748B" letter-spacing="1.2">LONGEST STREAK</text>
+    <text x="244" y="104" class="mono" font-size="34" font-weight="800" fill="#FBBF24">18 <tspan font-size="16" font-weight="700">DAYS</tspan></text>
+    <text x="244" y="123" class="mono" font-size="10.5" font-weight="600" fill="#94A3B8">🔥 140 Active Days (12M)</text>
+  </g>
+
+  <!-- KPI 3: Current Streak / Today -->
+  <g>
+    <text x="464" y="68" class="mono" font-size="10" font-weight="700" fill="#64748B" letter-spacing="1.2">CURRENT STREAK</text>
+    <text x="464" y="104" class="mono" font-size="34" font-weight="800" fill="#14B8A6">1 <tspan font-size="16" font-weight="700">DAY</tspan></text>
+    <text x="464" y="123" class="mono" font-size="10.5" font-weight="600" fill="#38BDF8">⚡ 15 Contributions Today</text>
+  </g>
+
+  <!-- KPI 4: Total Repositories -->
+  <g>
+    <text x="684" y="68" class="mono" font-size="10" font-weight="700" fill="#64748B" letter-spacing="1.2">REPOSITORIES</text>
+    <text x="684" y="104" class="mono" font-size="34" font-weight="800" fill="#F8FAFC">86</text>
+    <text x="684" y="123" class="mono" font-size="10.5" font-weight="600" fill="#94A3B8">50 Public · 36 Private</text>
+  </g>
+
+  <line x1="0" y1="134" x2="880" y2="134" stroke="#1D2534" stroke-width="1"/>
+  <line x1="504" y1="134" x2="504" y2="268" stroke="#1D2534" stroke-width="1"/>
+
+  <!-- Bottom Left: 26-Week Contribution Velocity Chart (x: 28..480) -->
+  <g>
+    <text x="28" y="156" class="mono" font-size="10" font-weight="700" fill="#64748B" letter-spacing="1.4">26-WEEK COMMIT &amp; CONTRIBUTION VELOCITY</text>
+    <rect x="28" y="215" width="12" height="9" rx="3" fill="#1C2536"/>
+    <rect x="46" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="63" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="81" y="216" width="12" height="8" rx="3" fill="#1C2536"/>
+    <rect x="98" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="116" y="166" width="12" height="58" rx="3" fill="#14B8A6"/>
+    <rect x="133" y="210" width="12" height="14" rx="3" fill="#1C2536"/>
+    <rect x="151" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="168" y="195" width="12" height="29" rx="3" fill="#38BDF8"/>
+    <rect x="186" y="188" width="12" height="36" rx="3" fill="#14B8A6"/>
+    <rect x="203" y="192" width="12" height="32" rx="3" fill="#38BDF8"/>
+    <rect x="221" y="203" width="12" height="21" rx="3" fill="#38BDF8"/>
+    <rect x="238" y="176" width="12" height="48" rx="3" fill="#14B8A6"/>
+    <rect x="256" y="214" width="12" height="10" rx="3" fill="#1C2536"/>
+    <rect x="273" y="208" width="12" height="16" rx="3" fill="#38BDF8"/>
+    <rect x="291" y="211" width="12" height="13" rx="3" fill="#1C2536"/>
+    <rect x="308" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="326" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="343" y="218" width="12" height="6" rx="3" fill="#1C2536"/>
+    <rect x="361" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="378" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="396" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="413" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="431" y="219" width="12" height="5" rx="3" fill="#1C2536"/>
+    <rect x="448" y="217" width="12" height="7" rx="3" fill="#1C2536"/>
+    <rect x="466" y="219" width="12" height="5" rx="3" fill="#FBBF24" class="pulse-bar"/>
+    <text x="28" y="246" class="mono" font-size="10" fill="#64748B">6 MONTHS AGO</text>
+    <text x="476" y="246" text-anchor="end" class="mono" font-size="10" font-weight="700" fill="#FBBF24">● THIS WEEK</text>
+  </g>
+
+  <!-- Bottom Right: Core Language Distribution (x: 528..852) -->
+  <g>
+    <text x="528" y="156" class="mono" font-size="10" font-weight="700" fill="#64748B" letter-spacing="1.4">PRIMARY STACK DISTRIBUTION (86 REPOS)</text>
+    <rect x="528" y="176" width="120" height="12" rx="3" fill="#14B8A6"/>
+    <rect x="651" y="176" width="81" height="12" rx="3" fill="#38BDF8"/>
+    <rect x="735" y="176" width="55" height="12" rx="3" fill="#818CF8"/>
+    <rect x="793" y="176" width="55" height="12" rx="3" fill="#94A3B8"/>
+
+    <g class="mono" font-size="11.5" font-weight="600" fill="#F8FAFC">
+      <circle cx="534" cy="210" r="5" fill="#14B8A6"/>
+      <text x="546" y="214">Python <tspan fill="#64748B">38%</tspan></text>
+
+      <circle cx="704" cy="210" r="5" fill="#38BDF8"/>
+      <text x="716" y="214">TS / JS <tspan fill="#64748B">26%</tspan></text>
+
+      <circle cx="534" cy="238" r="5" fill="#818CF8"/>
+      <text x="546" y="242">C++ / Rust <tspan fill="#64748B">18%</tspan></text>
+
+      <circle cx="704" cy="238" r="5" fill="#94A3B8"/>
+      <text x="716" y="242">Web / TeX <tspan fill="#64748B">18%</tspan></text>
+    </g>
+  </g>
+</svg>
