@@ -433,7 +433,7 @@ function buildWebCardSvg(mode = "dark") {
       <text x="14" y="19" class="mono" font-size="11" font-weight="700" fill="${p.blue}">#SRV-204</text>
       <text x="86" y="19" class="sans" font-size="12.5" font-weight="700" fill="${p.ink}">Honda CR-V Gen 3 · Keihin ECU</text>
       <rect x="358" y="8" width="92" height="18" rx="9" fill="${p.tealSoft}"/>
-      <text class="anim-badge" x="404" y="20" text-anchor="middle" class="mono" font-size="9.5" font-weight="700" fill="${p.teal}">● BENCH TEST</text>
+      <text class="mono anim-badge" x="404" y="20" text-anchor="middle" font-size="9.5" font-weight="700" fill="${p.teal}">● BENCH TEST</text>
       <!-- Animated Progress Bar inside Ticket 1 -->
       <rect x="14" y="30" width="220" height="5" rx="2.5" fill="${p.surface2}"/>
       <rect class="anim-bar" x="14" y="30" width="160" height="5" rx="2.5" fill="${p.blue}"/>
