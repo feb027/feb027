@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 124" width="288" height="124" role="img" aria-label="04 mic-hp — Wireless PC virtual microphone">
+  <title>04 mic-hp</title>
+  <defs>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      @keyframes eqBar {
+        0%, 100% { transform: scaleY(0.35); }
+        50% { transform: scaleY(1); }
+      }
+      .eq { transform-box: fill-box; transform-origin: center bottom; animation: eqBar 1.4s ease-in-out infinite; }
+      @media (prefers-reduced-motion: reduce) { .eq { animation: none; } }
+    </style>
+  </defs>
+
+  <text x="0" y="24" class="mono" font-size="11" fill="#6E7681">04</text>
+  <g>
+    <rect x="234" y="13" width="3" height="12" rx="1.5" fill="#30363D" class="eq" style="animation-delay: 0s"/>
+    <rect x="240" y="9" width="3" height="16" rx="1.5" fill="#2DD4BF" class="eq" style="animation-delay: 0.2s"/>
+    <rect x="246" y="7" width="3" height="18" rx="1.5" fill="#2DD4BF" class="eq" style="animation-delay: 0.4s"/>
+    <rect x="252" y="11" width="3" height="14" rx="1.5" fill="#2DD4BF" class="eq" style="animation-delay: 0.15s"/>
+    <rect x="258" y="15" width="3" height="10" rx="1.5" fill="#30363D" class="eq" style="animation-delay: 0.35s"/>
+  </g>
+
+  <text x="0" y="50" class="sans" font-size="17" font-weight="600" fill="#F0F6FC" letter-spacing="-0.3">mic-hp</text>
+  <text x="0" y="71" class="sans" font-size="12.5" fill="#8B949E">Wireless PC virtual mic (~2 ms)</text>
+  <text x="0" y="88" class="sans" font-size="12.5" fill="#8B949E">from Android to Windows</text>
+  <text x="0" y="110" class="mono" font-size="11" fill="#6E7681">Rust · WASAPI · Compose</text>
+
+  <line x1="287" y1="10" x2="287" y2="112" stroke="#21262D" stroke-width="1"/>
+</svg>

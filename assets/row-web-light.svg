@@ -20,7 +20,6 @@
   <text x="36" y="61" class="sans" font-size="13.5" fill="#57606A">ECU repair and workshop service web app</text>
   <text x="36" y="82" class="mono" font-size="11.5" fill="#6E7781">React · TypeScript · FastAPI</text>
 
-  <!-- Minimal unboxed wireframe rows -->
   <g>
     <circle cx="668" cy="24" r="2.2" fill="#D0D7DE"/>
     <circle cx="677" cy="24" r="2.2" fill="#D0D7DE"/>

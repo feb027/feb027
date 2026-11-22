@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Adaptive Light/Dark Swiss Editorial SVG Generator for feb027/feb027
- * Zero cards, 1px hairline structure, calm CSS/SVG motion, strict XML valid.
+ * Unified across navigation chips, hero, 01-06 project rows/columns, and live contribution heatmap.
+ * Zero card soup, 1px hairline structure, calm CSS motion, strict XML valid.
  */
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -11,23 +12,54 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, "..");
 const ASSETS_DIR = path.join(ROOT_DIR, "assets");
 
+function buildDefaultHeatmapWeeks() {
+  const pattern = [
+    [0, 2, 1, 0, 3, 1, 0],
+    [1, 0, 4, 2, 0, 1, 2],
+    [0, 3, 2, 1, 0, 2, 0],
+    [2, 1, 0, 5, 3, 0, 1],
+    [0, 0, 2, 1, 4, 2, 0],
+    [1, 3, 5, 2, 1, 0, 2],
+    [0, 4, 6, 8, 3, 1, 0],
+    [1, 2, 0, 3, 2, 1, 0],
+    [0, 1, 4, 2, 5, 0, 1],
+    [2, 5, 3, 7, 4, 2, 0],
+    [1, 0, 2, 4, 6, 3, 1],
+    [0, 3, 5, 2, 1, 4, 0],
+    [2, 1, 0, 3, 2, 0, 1],
+    [0, 2, 6, 4, 1, 2, 0],
+    [1, 4, 3, 8, 5, 2, 1],
+    [0, 5, 7, 4, 2, 3, 0],
+    [2, 3, 1, 0, 4, 2, 1],
+    [0, 2, 4, 3, 5, 1, 0],
+    [1, 6, 5, 8, 4, 2, 1],
+    [2, 4, 9, 6, 3, 5, 2],
+    [1, 3, 2, 5, 4, 1, 0],
+    [0, 4, 3, 2, 6, 2, 1],
+    [2, 5, 7, 4, 3, 2, 0],
+    [1, 8, 6, 9, 5, 4, 2],
+    [0, 4, 3, 6, 2, 3, 1],
+    [2, 3, 5, 4, 7, 2, 1],
+    [1, 4, 6, 3, 5, 4, 2],
+    [0, 3, 4, 6, 8, 5, 3],
+  ];
+  return pattern;
+}
+
 const DEFAULT_STATS = {
   totalRepos: 86,
   publicRepos: 50,
   privateRepos: 36,
-  totalContributions12m: 1697,
-  allTimeContributions: 2450,
-  publicCommits12m: 1290,
+  totalContributions12m: 1702,
+  allTimeContributions: 2455,
+  publicCommits12m: 1295,
   privateContributions12m: 369,
   longestStreak: 18,
   currentStreak: 1,
   activeDays12m: 140,
   todayContributions: 15,
   updatedDate: new Date().toISOString().slice(0, 10),
-  weeklyCounts: [
-    14, 22, 19, 31, 12, 27, 45, 38, 18, 29, 52, 41, 33, 24, 48, 63, 39, 28, 54,
-    71, 44, 36, 62, 84, 51, 38,
-  ],
+  heatmapWeeks: buildDefaultHeatmapWeeks(),
   languages: [
     { name: "Python", pct: 38, colorDark: "#2DD4BF", colorLight: "#0F766E" },
     { name: "TypeScript / JS", pct: 26, colorDark: "#38BDF8", colorLight: "#0284C7" },
@@ -143,9 +175,11 @@ async function fetchLiveGitHubStats() {
     const todayContributions =
       days.length > 0 ? days[days.length - 1].contributionCount : 0;
 
-    const last26Weeks = weeks.slice(-26).map((w) =>
-      (w.contributionDays || []).reduce((acc, d) => acc + d.contributionCount, 0)
-    );
+    const last28Weeks = weeks.slice(-28).map((w) => {
+      const counts = (w.contributionDays || []).map((d) => d.contributionCount);
+      while (counts.length < 7) counts.push(0);
+      return counts.slice(0, 7);
+    });
 
     return {
       ...DEFAULT_STATS,
@@ -160,8 +194,8 @@ async function fetchLiveGitHubStats() {
       currentStreak: Math.max(currentStreak, 1),
       activeDays12m: activeDays12m || DEFAULT_STATS.activeDays12m,
       todayContributions,
-      weeklyCounts:
-        last26Weeks.length === 26 ? last26Weeks : DEFAULT_STATS.weeklyCounts,
+      heatmapWeeks:
+        last28Weeks.length === 28 ? last28Weeks : DEFAULT_STATS.heatmapWeeks,
       updatedDate: new Date().toISOString().slice(0, 10),
     };
   } catch {
@@ -177,7 +211,9 @@ function getPalette(mode = "dark") {
         inkMuted: "#6E7681",
         hairline: "#21262D",
         accent: "#2DD4BF",
-        accentMuted: "#134E4A",
+        accentMid: "#0D9488",
+        accentLow: "#134E4A",
+        cellEmpty: "#161B22",
         wire: "#C9D1D9",
         wireMuted: "#30363D",
         barBg: "#21262D",
@@ -188,7 +224,9 @@ function getPalette(mode = "dark") {
         inkMuted: "#6E7781",
         hairline: "#D0D7DE",
         accent: "#0F766E",
-        accentMuted: "#99F6E4",
+        accentMid: "#14B8A6",
+        accentLow: "#99F6E4",
+        cellEmpty: "#EBEDF0",
         wire: "#24292F",
         wireMuted: "#D0D7DE",
         barBg: "#EAECEF",
@@ -217,6 +255,51 @@ function makePeriodicWavePath(xStart, yMid, amp, wavelength, periods) {
 }
 
 /* ========================================================================== */
+/* 0. TOP ANIMATED NAV CHIPS (Individually clickable, staggered sweep)        */
+/* ========================================================================== */
+function buildNavChipSvg(mode = "dark", config) {
+  const p = getPalette(mode);
+  const { width, label, delaySec, hasDot, showSeparator } = config;
+  const lineEnd = showSeparator ? width - 22 : width - 8;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} 28" width="${width}" height="28" role="img" aria-label="${label}">
+  <title>${label}</title>
+  <defs>
+    <style>
+      .mono { font-family: ${FONT_MONO}; }
+      @keyframes navSweep {
+        0%, 60%, 100% { transform: scaleX(0.18); opacity: 0.25; }
+        25% { transform: scaleX(1); opacity: 0.95; }
+      }
+      @keyframes dotBreathe {
+        0%, 100% { opacity: 0.95; }
+        50% { opacity: 0.35; }
+      }
+      .nav-line {
+        transform-box: fill-box;
+        transform-origin: left center;
+        animation: navSweep 4.8s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+        animation-delay: ${delaySec}s;
+      }
+      .nav-dot {
+        animation: dotBreathe 2.6s ease-in-out infinite;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .nav-line { animation: none; opacity: 0.45; transform: scaleX(1); }
+        .nav-dot { animation: none; }
+      }
+    </style>
+  </defs>
+
+  ${hasDot ? `<circle cx="11" cy="13" r="2.6" fill="${p.accent}" class="nav-dot"/>` : ""}
+  <text x="${hasDot ? 21 : 8}" y="17" class="mono" font-size="11.5" fill="${p.inkSub}">${label} <tspan fill="${p.accent}" font-size="10.5">↗</tspan></text>
+  <line x1="${hasDot ? 21 : 8}" y1="22" x2="${lineEnd}" y2="22" stroke="${p.accent}" stroke-width="1" class="nav-line"/>
+  ${showSeparator ? `<circle cx="${width - 8}" cy="13" r="1.4" fill="${p.inkMuted}"/>` : ""}
+</svg>
+`;
+}
+
+/* ========================================================================== */
 /* 1. HERO SVG (880 x 148) — Borderless Typography + Flowing Contour Waves    */
 /* ========================================================================== */
 function buildHeroSvg(mode = "dark") {
@@ -225,7 +308,7 @@ function buildHeroSvg(mode = "dark") {
   const wave2 = makePeriodicWavePath(480, 78, 16, 180, 4);
   const wave3 = makePeriodicWavePath(480, 68, 11, 180, 4);
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 148" width="880" height="148" role="img" aria-label="Febnawan Fatur Rochman — Web, Computer Vision, and Embedded Systems">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 148" width="880" height="148" role="img" aria-label="Febnawan Fatur Rochman — Web Development, Computer Vision, and Embedded Systems">
   <title>Febnawan Fatur Rochman</title>
   <defs>
     <style>
@@ -288,7 +371,7 @@ function buildHeroSvg(mode = "dark") {
 }
 
 /* ========================================================================== */
-/* 2. PROJECT ROW 01 (880 x 104) — Multitech OS (Unboxed UI Wireframe)        */
+/* 2. PROJECT ROW 01 (880 x 104) — Multitech OS                               */
 /* ========================================================================== */
 function buildWebRowSvg(mode = "dark") {
   const p = getPalette(mode);
@@ -314,7 +397,6 @@ function buildWebRowSvg(mode = "dark") {
   <text x="36" y="61" class="sans" font-size="13.5" fill="${p.inkSub}">ECU repair and workshop service web app</text>
   <text x="36" y="82" class="mono" font-size="11.5" fill="${p.inkMuted}">React · TypeScript · FastAPI</text>
 
-  <!-- Minimal unboxed wireframe rows -->
   <g>
     <circle cx="668" cy="24" r="2.2" fill="${p.wireMuted}"/>
     <circle cx="677" cy="24" r="2.2" fill="${p.wireMuted}"/>
@@ -339,7 +421,7 @@ function buildWebRowSvg(mode = "dark") {
 }
 
 /* ========================================================================== */
-/* 3. PROJECT ROW 02 (880 x 104) — ECU Bench S3 (Unboxed Ignition Trace)      */
+/* 3. PROJECT ROW 02 (880 x 104) — ECU Bench S3                               */
 /* ========================================================================== */
 function buildEcuRowSvg(mode = "dark") {
   const p = getPalette(mode);
@@ -395,7 +477,7 @@ function buildEcuRowSvg(mode = "dark") {
 }
 
 /* ========================================================================== */
-/* 4. PROJECT ROW 03 (880 x 104) — YOLO26 INT8 (Unboxed Tracking Sketch)      */
+/* 4. PROJECT ROW 03 (880 x 104) — YOLO26 INT8                                */
 /* ========================================================================== */
 function buildVisionRowSvg(mode = "dark") {
   const p = getPalette(mode);
@@ -444,23 +526,145 @@ function buildVisionRowSvg(mode = "dark") {
 }
 
 /* ========================================================================== */
-/* 5. ACTIVITY & LANGUAGES STRIP (880 x 116) — Borderless Sparkline & Stack   */
+/* 5. SECONDARY 3-COLUMN ANIMATED SVGs (288 x 124 each) — 04, 05, 06          */
+/* ========================================================================== */
+function buildColMicHpSvg(mode = "dark") {
+  const p = getPalette(mode);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 124" width="288" height="124" role="img" aria-label="04 mic-hp — Wireless PC virtual microphone">
+  <title>04 mic-hp</title>
+  <defs>
+    <style>
+      .sans { font-family: ${FONT_SANS}; }
+      .mono { font-family: ${FONT_MONO}; }
+      @keyframes eqBar {
+        0%, 100% { transform: scaleY(0.35); }
+        50% { transform: scaleY(1); }
+      }
+      .eq { transform-box: fill-box; transform-origin: center bottom; animation: eqBar 1.4s ease-in-out infinite; }
+      @media (prefers-reduced-motion: reduce) { .eq { animation: none; } }
+    </style>
+  </defs>
+
+  <text x="0" y="24" class="mono" font-size="11" fill="${p.inkMuted}">04</text>
+  <g>
+    <rect x="234" y="13" width="3" height="12" rx="1.5" fill="${p.wireMuted}" class="eq" style="animation-delay: 0s"/>
+    <rect x="240" y="9" width="3" height="16" rx="1.5" fill="${p.accent}" class="eq" style="animation-delay: 0.2s"/>
+    <rect x="246" y="7" width="3" height="18" rx="1.5" fill="${p.accent}" class="eq" style="animation-delay: 0.4s"/>
+    <rect x="252" y="11" width="3" height="14" rx="1.5" fill="${p.accent}" class="eq" style="animation-delay: 0.15s"/>
+    <rect x="258" y="15" width="3" height="10" rx="1.5" fill="${p.wireMuted}" class="eq" style="animation-delay: 0.35s"/>
+  </g>
+
+  <text x="0" y="50" class="sans" font-size="17" font-weight="600" fill="${p.ink}" letter-spacing="-0.3">mic-hp</text>
+  <text x="0" y="71" class="sans" font-size="12.5" fill="${p.inkSub}">Wireless PC virtual mic (~2 ms)</text>
+  <text x="0" y="88" class="sans" font-size="12.5" fill="${p.inkSub}">from Android to Windows</text>
+  <text x="0" y="110" class="mono" font-size="11" fill="${p.inkMuted}">Rust · WASAPI · Compose</text>
+
+  <line x1="287" y1="10" x2="287" y2="112" stroke="${p.hairline}" stroke-width="1"/>
+</svg>
+`;
+}
+
+function buildColMydriaSvg(mode = "dark") {
+  const p = getPalette(mode);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 124" width="288" height="124" role="img" aria-label="05 Mydria — Diabetic retinopathy screening">
+  <title>05 Mydria</title>
+  <defs>
+    <style>
+      .sans { font-family: ${FONT_SANS}; }
+      .mono { font-family: ${FONT_MONO}; }
+      @keyframes scanOrbit {
+        0%, 100% { transform: scale(0.88); opacity: 0.45; }
+        50% { transform: scale(1.12); opacity: 1; }
+      }
+      .scan-ring { transform-box: fill-box; transform-origin: center; animation: scanOrbit 3.4s cubic-bezier(0.32, 0.72, 0, 1) infinite; }
+      @media (prefers-reduced-motion: reduce) { .scan-ring { animation: none; opacity: 0.8; } }
+    </style>
+  </defs>
+
+  <text x="18" y="24" class="mono" font-size="11" fill="${p.inkMuted}">05</text>
+  <g>
+    <circle cx="256" cy="18" r="9" fill="none" stroke="${p.wireMuted}" stroke-width="1"/>
+    <circle cx="256" cy="18" r="5" fill="none" stroke="${p.accent}" stroke-width="1.3" stroke-dasharray="6 3" class="scan-ring"/>
+    <circle cx="256" cy="18" r="1.8" fill="${p.accent}"/>
+  </g>
+
+  <text x="18" y="50" class="sans" font-size="17" font-weight="600" fill="${p.ink}" letter-spacing="-0.3">Mydria</text>
+  <text x="18" y="71" class="sans" font-size="12.5" fill="${p.inkSub}">Diabetic retinopathy screening</text>
+  <text x="18" y="88" class="sans" font-size="12.5" fill="${p.inkSub}">on APTOS 2019 (Grad-CAM++)</text>
+  <text x="18" y="110" class="mono" font-size="11" fill="${p.inkMuted}">ConvNeXt-V2 · FastAPI · React</text>
+
+  <line x1="287" y1="10" x2="287" y2="112" stroke="${p.hairline}" stroke-width="1"/>
+</svg>
+`;
+}
+
+function buildColAutobardSvg(mode = "dark") {
+  const p = getPalette(mode);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 124" width="288" height="124" role="img" aria-label="06 wwm-autobard — Automated MIDI player">
+  <title>06 wwm-autobard</title>
+  <defs>
+    <style>
+      .sans { font-family: ${FONT_SANS}; }
+      .mono { font-family: ${FONT_MONO}; }
+      @keyframes midiNote {
+        0%, 100% { transform: translateY(0px); opacity: 0.45; }
+        50% { transform: translateY(5px); opacity: 1; }
+      }
+      .note-a { animation: midiNote 1.8s ease-in-out infinite; }
+      .note-b { animation: midiNote 2.2s ease-in-out infinite; animation-delay: 0.4s; }
+      .note-c { animation: midiNote 1.6s ease-in-out infinite; animation-delay: 0.8s; }
+      @media (prefers-reduced-motion: reduce) { .note-a, .note-b, .note-c { animation: none; opacity: 0.85; } }
+    </style>
+  </defs>
+
+  <text x="18" y="24" class="mono" font-size="11" fill="${p.inkMuted}">06</text>
+  <g>
+    <line x1="242" y1="24" x2="278" y2="24" stroke="${p.hairline}" stroke-width="1"/>
+    <rect x="244" y="11" width="7" height="4" rx="1.5" fill="${p.accent}" class="note-a"/>
+    <rect x="255" y="15" width="7" height="4" rx="1.5" fill="${p.inkSub}" class="note-b"/>
+    <rect x="266" y="10" width="7" height="4" rx="1.5" fill="${p.accent}" class="note-c"/>
+  </g>
+
+  <text x="18" y="50" class="sans" font-size="17" font-weight="600" fill="${p.ink}" letter-spacing="-0.3">wwm-autobard</text>
+  <text x="18" y="71" class="sans" font-size="12.5" fill="${p.inkSub}">Automated MIDI &amp; sheet music</text>
+  <text x="18" y="88" class="sans" font-size="12.5" fill="${p.inkSub}">player for Where Winds Meet</text>
+  <text x="18" y="110" class="mono" font-size="11" fill="${p.inkMuted}">Python · MIDI · 3 ★</text>
+</svg>
+`;
+}
+
+/* ========================================================================== */
+/* 6. TELEMETRY & HEATMAP SVG (880 x 146) — 28x7 Live Matrix & Stack          */
 /* ========================================================================== */
 function buildStatsSvg(mode = "dark", stats = DEFAULT_STATS) {
   const p = getPalette(mode);
-  const maxWeekly = Math.max(...stats.weeklyCounts, 1);
 
-  const barsSvg = stats.weeklyCounts
-    .map((count, idx) => {
-      const x = idx * 12;
-      const barH = Math.max(4, Math.round((count / maxWeekly) * 42));
-      const y = 74 - barH;
-      const isRecent = idx >= stats.weeklyCounts.length - 6;
-      const fill = isRecent ? p.accent : p.wireMuted;
-      const delay = (idx * 0.08).toFixed(2);
-      return `<rect x="${x}" y="${y}" width="6" height="${barH}" rx="2" fill="${fill}" class="spark-bar" style="animation-delay: ${delay}s"/>`;
-    })
-    .join("\n      ");
+  const cells = [];
+  stats.heatmapWeeks.forEach((weekDays, wIdx) => {
+    weekDays.forEach((count, dIdx) => {
+      const x = wIdx * 10;
+      const y = 36 + dIdx * 10;
+      let fill = p.cellEmpty;
+      let cls = "";
+      let delay = "0";
+      if (count >= 6) {
+        fill = p.accent;
+        cls = "hm-active";
+        delay = ((wIdx + dIdx) * 0.06).toFixed(2);
+      } else if (count >= 3) {
+        fill = p.accentMid;
+        cls = "hm-active";
+        delay = ((wIdx + dIdx) * 0.06).toFixed(2);
+      } else if (count >= 1) {
+        fill = p.accentLow;
+      }
+      cells.push(
+        cls
+          ? `<rect x="${x}" y="${y}" width="7" height="7" rx="1.5" fill="${fill}" class="${cls}" style="animation-delay: ${delay}s"/>`
+          : `<rect x="${x}" y="${y}" width="7" height="7" rx="1.5" fill="${fill}"/>`
+      );
+    });
+  });
 
   const barWidth = 416;
   let langX = 464;
@@ -468,7 +672,7 @@ function buildStatsSvg(mode = "dark", stats = DEFAULT_STATS) {
     .map((lang) => {
       const w = Math.round((lang.pct / 100) * barWidth);
       const color = mode === "dark" ? lang.colorDark : lang.colorLight;
-      const seg = `<rect x="${langX}" y="42" width="${w}" height="6" fill="${color}"/>`;
+      const seg = `<rect x="${langX}" y="46" width="${w}" height="6" fill="${color}"/>`;
       langX += w;
       return seg;
     })
@@ -476,55 +680,76 @@ function buildStatsSvg(mode = "dark", stats = DEFAULT_STATS) {
 
   const [py, ts, cpp, tex] = stats.languages;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 116" width="880" height="116" role="img" aria-label="GitHub activity and language summary">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 146" width="880" height="146" role="img" aria-label="GitHub Activity and Languages">
   <title>Activity and Languages</title>
   <defs>
     <style>
       .sans { font-family: ${FONT_SANS}; }
       .mono { font-family: ${FONT_MONO}; }
-      @keyframes sparkWave {
+      @keyframes cellRipple {
         0%, 100% { opacity: 0.72; }
         50% { opacity: 1; }
       }
-      .spark-bar { animation: sparkWave 3.6s ease-in-out infinite; }
+      @keyframes barGlint {
+        0% { transform: translateX(-120px); opacity: 0; }
+        35% { opacity: 0.35; }
+        65% { opacity: 0.35; }
+        100% { transform: translateX(460px); opacity: 0; }
+      }
+      @keyframes liveBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+      .hm-active { animation: cellRipple 3.2s ease-in-out infinite; }
+      .lang-glint { animation: barGlint 5.5s cubic-bezier(0.32, 0.72, 0, 1) infinite; }
+      .live-dot { animation: liveBlink 2.4s ease-in-out infinite; }
       @media (prefers-reduced-motion: reduce) {
-        .spark-bar { animation: none; opacity: 1; }
+        .hm-active, .lang-glint, .live-dot { animation: none; opacity: 1; }
       }
     </style>
     <clipPath id="langBarClip">
-      <rect x="464" y="42" width="${barWidth}" height="6" rx="3"/>
+      <rect x="464" y="46" width="${barWidth}" height="6" rx="3"/>
     </clipPath>
+    <linearGradient id="glintGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
   </defs>
 
   <line x1="0" y1="1" x2="880" y2="1" stroke="${p.hairline}" stroke-width="1"/>
 
-  <text x="0" y="25" class="mono" font-size="10.5" font-weight="600" fill="${p.inkMuted}" letter-spacing="1.2">ACTIVITY</text>
+  <text x="0" y="24" class="mono" font-size="10.5" font-weight="600" fill="${p.inkMuted}" letter-spacing="1.2">CONTRIBUTION MATRIX (28 WEEKS)</text>
   <g>
-    ${barsSvg}
+    ${cells.join("\n    ")}
   </g>
-  <text x="0" y="99" class="mono" font-size="12" fill="${p.inkSub}">${formatNumber(stats.totalContributions12m)} commits (12m)  ·  ${stats.totalRepos} repos  ·  ${stats.longestStreak}d streak</text>
+  <text x="0" y="130" class="mono" font-size="11.5" fill="${p.inkSub}">${formatNumber(stats.totalContributions12m)} commits (12m)  ·  ${formatNumber(stats.allTimeContributions)} all-time  ·  ${stats.totalRepos} repos  ·  ${stats.longestStreak}d streak</text>
 
-  <text x="464" y="25" class="mono" font-size="10.5" font-weight="600" fill="${p.inkMuted}" letter-spacing="1.2">LANGUAGES</text>
-  <text x="880" y="25" text-anchor="end" class="mono" font-size="10.5" fill="${p.inkMuted}">Updated ${stats.updatedDate}</text>
+  <text x="464" y="24" class="mono" font-size="10.5" font-weight="600" fill="${p.inkMuted}" letter-spacing="1.2">LANGUAGES</text>
+  <circle cx="752" cy="20" r="2.6" fill="${p.accent}" class="live-dot"/>
+  <text x="880" y="24" text-anchor="end" class="mono" font-size="10.5" fill="${p.inkMuted}">Updated ${stats.updatedDate}</text>
 
-  <rect x="464" y="42" width="${barWidth}" height="6" rx="3" fill="${p.barBg}"/>
+  <rect x="464" y="46" width="${barWidth}" height="6" rx="3" fill="${p.barBg}"/>
   <g clip-path="url(#langBarClip)">
     ${langSegments}
+    <rect x="464" y="46" width="84" height="6" fill="url(#glintGrad)" class="lang-glint"/>
   </g>
 
   <g class="mono" font-size="11.5" fill="${p.inkSub}">
-    <circle cx="468" cy="72" r="4" fill="${mode === "dark" ? py.colorDark : py.colorLight}"/>
-    <text x="478" y="76">Python <tspan fill="${p.inkMuted}">${py.pct}%</tspan></text>
+    <circle cx="468" cy="78" r="4" fill="${mode === "dark" ? py.colorDark : py.colorLight}"/>
+    <text x="478" y="82">Python <tspan fill="${p.inkMuted}">${py.pct}%</tspan></text>
 
-    <circle cx="672" cy="72" r="4" fill="${mode === "dark" ? ts.colorDark : ts.colorLight}"/>
-    <text x="682" y="76">TypeScript / JS <tspan fill="${p.inkMuted}">${ts.pct}%</tspan></text>
+    <circle cx="672" cy="78" r="4" fill="${mode === "dark" ? ts.colorDark : ts.colorLight}"/>
+    <text x="682" y="82">TypeScript / JS <tspan fill="${p.inkMuted}">${ts.pct}%</tspan></text>
 
-    <circle cx="468" cy="96" r="4" fill="${mode === "dark" ? cpp.colorDark : cpp.colorLight}"/>
-    <text x="478" y="100">C++ / Rust <tspan fill="${p.inkMuted}">${cpp.pct}%</tspan></text>
+    <circle cx="468" cy="102" r="4" fill="${mode === "dark" ? cpp.colorDark : cpp.colorLight}"/>
+    <text x="478" y="106">C++ / Rust <tspan fill="${p.inkMuted}">${cpp.pct}%</tspan></text>
 
-    <circle cx="672" cy="96" r="4" fill="${mode === "dark" ? tex.colorDark : tex.colorLight}"/>
-    <text x="682" y="100">Web / TeX <tspan fill="${p.inkMuted}">${tex.pct}%</tspan></text>
+    <circle cx="672" cy="102" r="4" fill="${mode === "dark" ? tex.colorDark : tex.colorLight}"/>
+    <text x="682" y="106">Web / TeX <tspan fill="${p.inkMuted}">${tex.pct}%</tspan></text>
   </g>
+
+  <text x="464" y="130" class="mono" font-size="11.5" fill="${p.inkMuted}">${stats.activeDays12m} active days (12m)  ·  ${formatNumber(stats.publicCommits12m)} public  ·  ${formatNumber(stats.privateContributions12m)} private</text>
 </svg>
 `;
 }
@@ -550,7 +775,18 @@ async function main() {
   await fs.mkdir(ASSETS_DIR, { recursive: true });
   const stats = await fetchLiveGitHubStats();
 
+  const navConfigs = [
+    { key: "nav-web", width: 158, label: "aquarise.my.id", delaySec: "0", hasDot: true, showSeparator: true },
+    { key: "nav-linkedin", width: 108, label: "linkedin", delaySec: "0.35", hasDot: false, showSeparator: true },
+    { key: "nav-mail", width: 242, label: "febnawanrochman2@gmail.com", delaySec: "0.7", hasDot: false, showSeparator: true },
+    { key: "nav-repos", width: 126, label: "repositories", delaySec: "1.05", hasDot: false, showSeparator: false },
+  ];
+
   const files = [
+    ...navConfigs.flatMap((cfg) => [
+      [`${cfg.key}-dark.svg`, buildNavChipSvg("dark", cfg)],
+      [`${cfg.key}-light.svg`, buildNavChipSvg("light", cfg)],
+    ]),
     ["hero-dark.svg", buildHeroSvg("dark")],
     ["hero-light.svg", buildHeroSvg("light")],
     ["row-web-dark.svg", buildWebRowSvg("dark")],
@@ -559,6 +795,12 @@ async function main() {
     ["row-ecu-light.svg", buildEcuRowSvg("light")],
     ["row-vision-dark.svg", buildVisionRowSvg("dark")],
     ["row-vision-light.svg", buildVisionRowSvg("light")],
+    ["col-michp-dark.svg", buildColMicHpSvg("dark")],
+    ["col-michp-light.svg", buildColMicHpSvg("light")],
+    ["col-mydria-dark.svg", buildColMydriaSvg("dark")],
+    ["col-mydria-light.svg", buildColMydriaSvg("light")],
+    ["col-autobard-dark.svg", buildColAutobardSvg("dark")],
+    ["col-autobard-light.svg", buildColAutobardSvg("light")],
     ["stats-dark.svg", buildStatsSvg("dark", stats)],
     ["stats-light.svg", buildStatsSvg("light", stats)],
   ];
@@ -573,23 +815,8 @@ async function main() {
     )
   );
 
-  // Clean up obsolete card-* SVGs from earlier layout
-  const obsolete = [
-    "card-web-dark.svg",
-    "card-web-light.svg",
-    "card-ecu-dark.svg",
-    "card-ecu-light.svg",
-    "card-vision-dark.svg",
-    "card-vision-light.svg",
-  ];
-  await Promise.all(
-    obsolete.map((name) =>
-      fs.rm(path.join(ASSETS_DIR, name), { force: true })
-    )
-  );
-
   console.log(
-    `Generated ${files.length} Swiss Editorial SVGs (Commits 12M: ${stats.totalContributions12m}, Repos: ${stats.totalRepos}, Streak: ${stats.longestStreak}d)`
+    `Generated ${files.length} unified Swiss Editorial SVGs (Commits 12M: ${stats.totalContributions12m}, All-time: ${stats.allTimeContributions}, Repos: ${stats.totalRepos})`
   );
 }
 

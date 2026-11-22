@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 124" width="288" height="124" role="img" aria-label="06 wwm-autobard — Automated MIDI player">
+  <title>06 wwm-autobard</title>
+  <defs>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      @keyframes midiNote {
+        0%, 100% { transform: translateY(0px); opacity: 0.45; }
+        50% { transform: translateY(5px); opacity: 1; }
+      }
+      .note-a { animation: midiNote 1.8s ease-in-out infinite; }
+      .note-b { animation: midiNote 2.2s ease-in-out infinite; animation-delay: 0.4s; }
+      .note-c { animation: midiNote 1.6s ease-in-out infinite; animation-delay: 0.8s; }
+      @media (prefers-reduced-motion: reduce) { .note-a, .note-b, .note-c { animation: none; opacity: 0.85; } }
+    </style>
+  </defs>
+
+  <text x="18" y="24" class="mono" font-size="11" fill="#6E7781">06</text>
+  <g>
+    <line x1="242" y1="24" x2="278" y2="24" stroke="#D0D7DE" stroke-width="1"/>
+    <rect x="244" y="11" width="7" height="4" rx="1.5" fill="#0F766E" class="note-a"/>
+    <rect x="255" y="15" width="7" height="4" rx="1.5" fill="#57606A" class="note-b"/>
+    <rect x="266" y="10" width="7" height="4" rx="1.5" fill="#0F766E" class="note-c"/>
+  </g>
+
+  <text x="18" y="50" class="sans" font-size="17" font-weight="600" fill="#1F2328" letter-spacing="-0.3">wwm-autobard</text>
+  <text x="18" y="71" class="sans" font-size="12.5" fill="#57606A">Automated MIDI &amp; sheet music</text>
+  <text x="18" y="88" class="sans" font-size="12.5" fill="#57606A">player for Where Winds Meet</text>
+  <text x="18" y="110" class="mono" font-size="11" fill="#6E7781">Python · MIDI · 3 ★</text>
+</svg>
